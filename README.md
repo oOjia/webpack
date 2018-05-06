@@ -57,18 +57,18 @@ npm i webpack-dev-server –D
 - port：开发服务器监听的端口
 
 ```diff
-+ devServer:{
-+        contentBase:path.resolve(__dirname,'dist'),
-+        host:'localhost',
-+        compress:true,
-+        port:8080
-+ }
+ devServer:{
+        contentBase:path.resolve(__dirname,'dist'),
+        host:'localhost',
+        compress:true,
+        port:8080
+ }
 ```
 ```diff
-+  "scripts": {
-+    "build": "webpack --mode development",
-+    "dev": "webpack-dev-server --open --mode development "
-+  }
+  "scripts": {
+    "build": "webpack --mode development",
+    "dev": "webpack-dev-server --open --mode development "
+  }
 ```
 
 ## 5. 支持加载css文件
@@ -83,7 +83,7 @@ npm i webpack-dev-server –D
 loader三种写法
 - use
 - loader
-- use+loader
+- useloader
 
 ### 5.2 css-loader
 ```js
@@ -92,14 +92,14 @@ npm i style-loader css-loader -D
 配置加载器
 ```diff
     module: {
-+        rules:[
-+            {
-+                test:/\.css$/,
-+                use:['style-loader','css-loader'],
-+                include:path.join(__dirname,'./src'),
-+                exclude:/node_modules/
-+            }
-+        ]
+        rules:[
+            {
+                test:/\.css$/,
+                use:['style-loader','css-loader'],
+                include:path.join(__dirname,'./src'),
+                exclude:/node_modules/
+            }
+        ]
     },
 ```
 
@@ -114,13 +114,13 @@ npm i html-webpack-plugin -D
 
 ```diff
     plugins: [
-+        new HtmlWebpackPlugin({
-+       minify: {
-+            removeAttributeQuotes:true
-+        },
-+        hash: true,
-+        template: './src/index.html',
-+        filename:'index.html'
+        new HtmlWebpackPlugin({
+       minify: {
+            removeAttributeQuotes:true
+        },
+        hash: true,
+        template: './src/index.html',
+        filename:'index.html'
     })]
 ```
 
@@ -168,14 +168,14 @@ npm install --save-dev extract-text-webpack-plugin@next
 ```diff
 {
                 test:/\.css$/,
-+                use: ExtractTextWebpackPlugin.extract({
-+                    use:'css-loader'
-+                }),
+                use: ExtractTextWebpackPlugin.extract({
+                    use:'css-loader'
+                }),
                 include:path.join(__dirname,'./src'),
                 exclude:/node_modules/
             },
 
    plugins: [
-+        new ExtractTextWebpackPlugin('css/index.css'),
+        new ExtractTextWebpackPlugin('css/index.css'),
 ```
 
